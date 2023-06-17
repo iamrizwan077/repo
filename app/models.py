@@ -8,9 +8,21 @@ FACULTY_TYPE_CHOICES = (
         ("Receptionist", 'Receptionist'),
     )
 
+DEPT_CHOICES = (
+        ('Anesthesia & ICU Department', 'Anesthesia & ICU Department'),
+        ('Behavioral Medicine', 'Behavioral Medicine'),
+        ('Child Health', 'Child Health'),
+        ('Clinical Physiology', 'Clinical Physiology'),
+        ('Dental & Maxillofacial Surgery', 'Dental & Maxillofacial Surgery'),
+        ('Emergency Medicine', 'Emergency Medicine'),
+        ('Family Medicine & Public Health', 'Family Medicine & Public Health'),
+        ('Genetics Department', 'Genetics Department'),
+)
+
 class CustomUser(AbstractUser):
-    role = models.CharField(choices=FACULTY_TYPE_CHOICES, max_length=15, default="Doctor")
-    
+    role = models.CharField(choices=FACULTY_TYPE_CHOICES, max_length=15)
+    department = models.CharField(choices=DEPT_CHOICES, max_length=35)
+
     def __str__(self) -> str:
         return self.email
 

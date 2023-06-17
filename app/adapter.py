@@ -24,5 +24,6 @@ class CustomAccountAdapter(DefaultAccountAdapter):
 
         user = super().save_user(request, user, form, False)
         user_field(user, 'role', request.data.get('role', ''))
+        user_field(user, 'department', request.data.get('department', ''))
         user.save()
         return user
